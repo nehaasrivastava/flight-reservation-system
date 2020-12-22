@@ -8,9 +8,9 @@ public class M {
      Ticket t= new Ticket();
      System.out.println("WELCOME to Indian Airline Reservation System!!");
      System.out.println("Name:");
-     p.name=sc.nextLine();
+     Passenger.name=sc.nextLine();
      System.out.println("Contact Number:");
-     p.phone=sc.nextLong();
+     Passenger.phone=sc.nextLong();
      System.out.println("Email:");
      p.email=sc.next();
      System.out.println("Address Details:-");
@@ -35,21 +35,62 @@ public class M {
      System.out.println("| Flight no: "+f.fno+"  |  Capacity: "+f.capacity+"  |  Seats Available: "+f.seatavailable+"  |  Price to pay: "+t.price+" |");
      System.out.println();
      System.out.println("Type in one of Regular or Tourist ticket");
-     p.type_of_ticket=sc2.next();
+     Passenger.type_of_ticket=sc2.next();
      Regular rt=new Regular();
      Tourist tt=new Tourist();
-     if(p.type_of_ticket.equals("Regular"))
+     if(Passenger.type_of_ticket.equals("Regular"))
      {
       System.out.println("Select service:food or snacks:");
      rt.service=sc2.next();
+     System.out.println("Thankyou for your choice. Enter yes to confirm booking or no to quit.");
+     p.choice=sc2.next();
+     if(p.choice.equalsIgnoreCase("Yes")) {
+    	 t.display();
+    	 f.seatavailable--;
+    	 System.out.println();
+    	 System.out.println("Here is your ticket. Enter YES to submit.");
+    	 System.out.println("Enter NO to cancel your ticket.");
+    	 t.s=sc2.next();
+    	 if(t.s.equalsIgnoreCase("yes")) {
+    		 System.out.println("Thankyou for your payment. Have a nice journey.");
+    	 }
+    	 else {
+    		 f.seatavailable++;
+    		 System.out.println("Thankyou for your time");
+    	 } 	 
+     }
+     else {
+    	 System.out.print("Thankyou for your time");
+     }
      }
      else{
       System.out.println("Enter hotel address");
       tt.hotel=sc2.next();
       System.out.println("Enter location to go");
       tt.location=sc2.next();
+      System.out.println("Thankyou for your choice. Enter yes to confirm booking or no to quit.");
+      p.choice=sc2.next();
+      if(p.choice.equalsIgnoreCase("Yes")) {
+     	 t.display();
+     	 f.seatavailable--;
+     	 System.out.println();
+     	 System.out.println("Here is your ticket. Enter YES to submit.");
+     	 System.out.println("Enter NO to cancel your ticket.");
+     	 t.s=sc2.next();
+     	 if(t.s.equalsIgnoreCase("yes")) {
+     		 System.out.println("Thankyou for your payment. Have a nice journey.");
+     	 }
+     	 else {
+     		 f.seatavailable++;
+     		 System.out.println("Thankyou for your time");
+     	 } 	 
+      }
+      else {
+     	 System.out.print("Thankyou for your time");
+      }
      }
-    System.out.println("Thank you for the payment"); 
+     sc.close();
+     sc2.close();
 	}
 
 }
